@@ -1,0 +1,59 @@
+@extends('layouts.admin')
+
+@section('title', 'Admin|View Student')
+
+@section('content')
+
+        <!-- Topbar -->
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between">
+            
+          <div class="col-lg-12">
+            <div class="card" style="margin-left:-25px;">
+              <div class="card-header py-2 d-flex flex-row  align-items-center justify-content-between">
+                <h6 class=" m-0 font-weight-bold text-primary">Student list </h6>
+                <div class="dropdown no-arrow">
+                </div>
+              </div>
+              <div class="card-body">
+                  {{-- <div class="mb-2"><a href="#"><button class="btn btn-primary"><span class="fa fa-plus"></span>&nbsp;Add Student</button></a></div> --}}
+            {{-- @foreach($students as $Student) --}}
+        
+                <table class="table table-bordered  table striped" style="margin-top:-15px;">
+                <th class="table-header">Sn</th>
+                <th class="table-header">First Name</th>
+                <th class="table-header">Other Names</th>
+                <th class="table-header">Registration Number </th>
+                <th class="table-header">Email</th>
+                <th class="table-header">Gender</th>
+                <th class="table-header">Action</th>
+                <tbody>
+                  @foreach ($students as $student)
+                    <tr>
+                    <td>{{ $student->id }}</td>
+                    <td>{{ $student->First_name }}</td>
+                    <td>{{ $student->Other_names }}</td>
+                    <td>{{ $student->RegNo}}</td>
+                    <td>{{ $student->Email }}</td>
+                    <td>{{ $student->Gender }}</td>
+                    <td> 
+                      <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                      <button class="btn btn-info"><i class="fa fa-edit"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+                @endforeach 
+              </table>  
+            
+             {{-- @endforeach --}}
+              </div>
+            </div>
+          </div> 
+            </div>
+        </div>
+      
+   <!-- Topbar -->
+        <!-- Container Fluid-->
+        <!---Container Fluid-->
+@endsection
