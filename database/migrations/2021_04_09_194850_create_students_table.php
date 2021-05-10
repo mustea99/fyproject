@@ -19,10 +19,11 @@ class CreateStudentsTable extends Migration
             $table->string('Other_names',100);
             $table->string('RegNo',100);
             $table->string('Email',100);
-            $table->string('Phone_No');
+            $table->string('Avatar',100);
+            $table->string('Phone_No')->nullable();
             $table->string('Department',100);
             $table->string('Gender',100);
-            $table->integer('Supervisor_id')->nullable();
+            $table->integer('Supervisor_id');
             $table->string('Password',100);
             $table->integer('code')->nullable();
             $table->timestamps();

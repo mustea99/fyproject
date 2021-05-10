@@ -13,6 +13,11 @@
                     <div class="list-group-item"><b>Status:</b> {!! $proposal->getTextualStatus() !!}</div>
                     <div class="list-group-item"><b>Time:</b> {{ $proposal->created_at }}</div>
                 </div>
+                <div class="mt-4 text-right">
+                    <a href="{{route('student.proposal.upload', $proposal->id)}}" class="btn btn-md btn-primary">
+                        <i class="fa fa-upload"></i> Upload Chapter
+                    </a>
+                </div>
             </div>
         </div>
     </div>
