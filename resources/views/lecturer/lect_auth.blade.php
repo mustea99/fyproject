@@ -51,8 +51,10 @@
                     <div style="margin-top:100px; letter-spacing:3px;padding:2px;text-transform:uppercase;font-weight:bold;"><h2 class="text-center text-white mt-4 shadow ">Supervisor Authentication</h2></div>
                     <div class="container-login">
                         <div class=" col-lg-12 mt-4">
-                                     
-                                      <form action="{{route('lecturerAuth.submit') }}" style="border:3px solid white;">
+                                @php
+                                echo\App\PageMsg::renderAll();
+                            @endphp
+                                      <form method="POST" action="{{ route('lecturer.lect_auth.submit') }}" style="border:3px solid white;">
                                        @csrf
                                         <div class="form-group">
                                           <input type="email" class="form-control mb-4"placeholder="University Mail" required name="Email">

@@ -77,7 +77,7 @@
                                    <td>{{ $noticeboard->id}}</td>
                                    <td>{{ $noticeboard->Recipient_type }}</td>
                                    <td>{{ $noticeboard->Message }}</td>
-                                   <td>{{ $noticeboard->timestamps }}</td>
+                                   <td>{{ $noticeboard->created_at }}</td>
                                    <td>
                                       <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
                                       <button class="btn btn-info"><i class="fa fa-edit"></i></button>

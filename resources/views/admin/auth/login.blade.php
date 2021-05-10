@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Login')
+@section('title', 'Admin Login')
 
 @section('content')
     <div class="d-flex justify-content-center">

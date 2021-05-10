@@ -8,7 +8,7 @@
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between">
             
-          <div class="col-lg-10">
+          <div class="col-lg-12">
             <div class="card" style="margin-left:-25px;">
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Add Student </h6>
@@ -46,6 +46,27 @@
                           @enderror
                           </div>
                       </div>
+
+                      <div class="form-row">
+                        <div class="col mb-2">
+                            <input type="text" name="Phone_No" placeholder="Mobile Number" class="form-control  @error('RegNo') is-invalid @enderror" value="{{old('RegNo')}}"> 
+                            @error('Phone_No')
+                            <span class="text-error">{{ $message }}</span>
+                          @enderror
+                          </div>
+                        <div class="col">
+                            <select class="form-control" name="Department">
+                              <option value="Select Department" selected>Select Department</option>
+                              <option value="Computer Science">Computer Science</option>
+                              <option value="Software Engineering">Software Engineering</option>
+                              <option value="Cyber Security">Cyber Security</option>
+                              <option value="Information Technology">Information Technology</option>
+                            </select>
+                            @error('Department')
+                            <span class="text-error">{{ $message }}</span>
+                          @enderror
+                          </div>
+                      </div>
                       <div class="form-row">
                         <div class="col-md-6"> 
                           <select class="form-control" name="Gender">
@@ -63,14 +84,8 @@
                           </div>
                       
                       </div>
-                    <div class="form-group mt-2">
-                            <label for="image">Input Image</label>
-                            <input type="file" name="Avatar" placeholder="Input Image"class="form-control  @error('Avatar') is-invalid @enderror"> 
-                            @error('Avatar')
-                            <span class="text-error">{{ $message }}</span>
-                          @enderror
-                          </div>
-                    <button class="btn btn-md btn-primary mt-2">
+                    
+                    <button class="btn btn-md btn-primary mt-4">
                        Add
                     </button>
                </form> 

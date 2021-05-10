@@ -48,22 +48,11 @@
                     <span style="font-size:14px;color:blue;">View Lecturers</span>
                 </a>
             </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="{{Route('admin.supervisor_list')}}" style="font-size:20px;">
-                        <i class="fa fa-eye"></i>
-                        <span style="font-size:14px;color:blue;">Supervisors</span>
-                    </a>
-                </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Student
             </div>
-            <li class="nav-item">
-                    <a class="nav-link" href="{{Route('admin.assign_supervisor')}}" >
-                        <i class="fa fa-user"></i>
-                        <span style="font-size:14px;color:blue;">Assign Supervisor</span>
-                    </a>
-                </li>
+           
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_student')}}" >
                     <i class="fa fa-user"></i>
@@ -115,12 +104,13 @@
                 <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
+                @if(auth()->guard('admin')->check())
                             <form action="{{route('admin.logout')}}" id="formLogout" method="post">@csrf</form>
                             <div style="margin-left:900px;color:white; text-transform:uppercase;" > 
                             <a class="btn btn-link " onclick="document.getElementById('formLogout').submit();">
                                 <span class="fas fa-sign-out-alt  text-white-400">Logout</span>
                                 </a></div>
-                        
+                @endif   
             </nav>
             <!-- Topbar -->
 

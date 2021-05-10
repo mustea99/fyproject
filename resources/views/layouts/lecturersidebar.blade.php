@@ -33,9 +33,13 @@
                Student
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{route ('lecturer.view_student') }}">
+                @php
+                    $id = Auth::guard('lecturer')->user()->id;
+                    
+                @endphp
+                <a class="nav-link" href="{{route ('lecturer.view_student', $id) }}">
                     <i class="fa fa-eye"></i>
-                    <span>View Students</span>
+                    <span>My Students</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -88,7 +92,7 @@
                 <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-                            <form action="" id="formLogout" method="post">@csrf</form>
+                            <form action="{{ route('lecturer.logout') }}" id="formLogout" method="post">@csrf</form>
                             <div style="margin-left:900px;color:white; text-transform:uppercase;" > 
                             <a class="btn btn-link " onclick="document.getElementById('formLogout').submit();">
                                 <span class="fas fa-sign-out-alt  text-white-400">Logout</span>

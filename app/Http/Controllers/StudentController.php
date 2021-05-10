@@ -10,15 +10,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\Lecturer;
+use App\Models\Supervisor;
 use App\Models\NoticeBoard;
+use App\Models\Proposal;
+use Illuminate\Support\Facades\Storage;
 use Mockery\Matcher\Not;
 
 class StudentController extends Controller
 {
-    public function view_supervisor(){
-     return view ('student.view_supervisor');
 
+    public function showApproved(){
+        return view('student.approved');
     }
+    public function view_supervisor()
+    {
+     return view ('student.view_supervisor', [
+         'supervisor' => Lecturer::find(Auth::guard('student')->user()->Supervisor_id)
+     ]);
+    }
+
    public function upload(){
         return view('student/upload');
    }
@@ -114,21 +124,63 @@ public function logout():RedirectResponse
     
     public function stud_view_notice(){
     
-      return view('student.view_notice_board',['noticeboards'=>NoticeBoard::all()
-      ]);
-      $studpost=NoticeBoard::query()->where('noticeboards.Recipient_type'=='student')->value('Message');
+      $studpost=NoticeBoard::query()
+        ->where('Recipient_type', 'student')
+        ->where('Recipient_id', Auth::guard('student')->user()->id)
+        ->get();
+
+        return view('student.view_notice_board',[
+            'noticeboards'=>$studpost
+        ]);
      }
 
 
-     public function showProposal(){
+     public function showProposal()
+     {
          return view('student.proposal');
      }
 
 
-     public function studentPropse(){
-         
+     public function saveProposal(Request $request)
+     {
+        $request->validate([
+            'title' => 'required|min:10|max:100',
+            'document' => 'required|file|mimes:pdf,doc,docx'
+        ]);
+
+        $currentStudent = Auth::guard('student')->user();
+        $uploadedDoc = $request->file('document');
+
+        $dName = microtime(true) . '.' . $uploadedDoc->getClientOriginalExtension();
+        $newFilePath = public_path("uploads/$dName");
+        move_uploaded_file($uploadedDoc->getPathname(), $newFilePath);
+
+        $proposal = Proposal::query()->create([
+            'student' => $currentStudent->id,
+            'lecturer' => $currentStudent->Supervisor_id,
+            'title' => $request->post('title'),
+            'document' => $dName
+        ]);
+
+        return redirect()
+            ->to("/student/proposal/{$proposal->id}")
+            ->with('msg:success', 'Proposal submitted successfully.');
      }
 
+     public function viewProposal(Request $request)
+     {
+        $proposal = Proposal::query()
+            ->select('proposals.*', 'lecturers.First_name', 'lecturers.Other_names')
+            ->join('lecturers', 'lecturers.id', 'proposals.lecturer')
+            ->where('student', Auth::guard('student')->user()->id)
+            ->where('proposals.id', $request->pid)
+            ->get()
+            ->first();
+        
+        return view('student.view_proposal', [
+            'proposal' => $proposal
+        ]);
+     }
 
      public function view_feedback(){
          return view('student.view_feedback');

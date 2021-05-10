@@ -25,8 +25,9 @@
                 <th class="table-header">First Name</th>
                 <th class="table-header">Other Names</th>
                 <th class="table-header">Registration Number </th>
-                <th class="table-header">Email</th>
                 <th class="table-header">Gender</th>
+                <th class="table-header">Lecturer</th>
+               
                 <th class="table-header">Action</th>
                 <tbody>
                   @foreach ($students as $student)
@@ -35,11 +36,12 @@
                     <td>{{ $student->First_name }}</td>
                     <td>{{ $student->Other_names }}</td>
                     <td>{{ $student->RegNo}}</td>
-                    <td>{{ $student->Email }}</td>
                     <td>{{ $student->Gender }}</td>
+                    <td>{{ $student->lFirst_name }} {{ $student->lOther_names }}</td>
+                  
                     <td> 
-                      <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
-                      <button class="btn btn-info"><i class="fa fa-edit"></i></button>
+                      <a onclick="return confirm('Are You sure to delete');" href="{{ route('delete.student', $student->id) }}"class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                      <a href="{{ route('edit.student', $student->id) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                     </td>
                   </tr>
                 </tbody>

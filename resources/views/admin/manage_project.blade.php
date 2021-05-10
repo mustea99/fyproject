@@ -11,7 +11,21 @@
             </div>
           </div>
           <div class="card-body">
-
+              <table class="table table-bordered table-striped" style="margin-top:-15px;">
+                  <thead>
+                  <tr>
+                    <th>Sn</th>
+                    <th>Name</th>
+                    <th>Registration Number</th>
+                    <th>Project Title</th>
+                    <th>Case Study</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+          
+                  </tbody>
+                  </table>
                    
           </div>
         </div>

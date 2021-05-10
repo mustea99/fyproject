@@ -24,8 +24,8 @@ class AuthController extends Controller
 
         if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
             return redirect()
-                ->route('admin.home')
-                ->with('msg:success', 'You are logged in successfully.');
+                ->route('admin.post');
+                //->with('msg:success', 'You are logged in successfully.');
         }
 
         return redirect()

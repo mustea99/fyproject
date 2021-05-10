@@ -18,7 +18,10 @@ class CreateLecturersTable extends Migration
             $table->string('First_name', 50);       
             $table->string('Other_names', 50);
             $table->string('Email', 150);
-            $table->string('Avatar',250)->nullable();
+            $table->string('Staff_id',50);
+            $table->string('Department',100);
+            $table->string('Phone_No');
+            $table->string('Office');
             $table->string('Password', 150);
             $table->integer('code')->nullable();
             $table->timestamps();

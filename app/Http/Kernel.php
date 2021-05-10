@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\AuthAdminMiddleware;
 use App\Http\Middleware\AuthStudentMiddleware;
+use App\Http\Middleware\AuthLecturerMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -59,6 +60,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'admin' => AuthAdminMiddleware::class,
         'student' => AuthStudentMiddleware::class,
+        'lecturer'=> AuthLecturerMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

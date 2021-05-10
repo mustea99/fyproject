@@ -9,6 +9,7 @@ use App\Models\NoticeBoard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 
 
@@ -51,8 +52,14 @@ class AdminController extends Controller
     
 
     public function view_student(){
+        
+      $students = Student::query()
+        ->select('students.*', 'lecturers.First_name AS lFirst_name', 'lecturers.Other_names AS lOther_names')
+        ->join('lecturers', 'students.Supervisor_id', 'lecturers.id')
+        ->get(); 
+        
         return view('admin.view_student', [
-            'students' => Student::all()
+            'students' => $students
         ]);
     }
 
@@ -117,7 +124,6 @@ class AdminController extends Controller
             'RegNo'=> 'required|min:16|max:99',
             'Email'=>'required|min:10|max:99|email',
             'Gender'=>'required',
-            'Avatar'=>'required|mimes:jpg,png,bmp'
         ]);
         $code = rand(0000, 9999);
         $student = new Student();
@@ -125,23 +131,15 @@ class AdminController extends Controller
         $student->Other_names = $request->Other_names;
         $student->RegNo = $request->RegNo;
         $student->Email = $request->Email;
+        $student->Phone_No=$request->Phone_No;
+        $student->Department=$request->Department;
         $student->Supervisor_id = $request->Supervisor_id;
         $student->Gender = $request->Gender;
         $student->Password = bcrypt($code);
         $student->code = $code;
-        if($request->file('Avatar')) {
-            $file = $request->Avatar;
-            $fileName = date('Ymd').$file->getClientOriginalName();
-            $file->move(public_path('uploads/'), $fileName);
-            $student->Avatar = $fileName;
-            $student->save();
-        }
+        $student->save();
 
-
-
-        
-
-        return redirect()->route('admin.manage_student')->with('msg:success', 'Student created successfully');
+        return redirect()->route('admin.view_student')->with('msg:success', 'Student created successfully');
     }
 
     public function viewStudent(Request $request)
@@ -154,7 +152,7 @@ class AdminController extends Controller
             'First_name'=>'required|min:3|max:99',
             'Other_names'=>'required|min:3|max:99',
             'Email'=>'required|min:10|max:99',
-            'Avatar'=>'required|mimes:jpg,png,bmp'
+            
             
 
         ]);
@@ -163,18 +161,15 @@ class AdminController extends Controller
         $lecturer->First_name = $request->First_name;
         $lecturer->Other_names = $request->Other_names;
         $lecturer->Email = $request->Email;
+        $lecturer->Staff_id=$request->Staff_id;
+        $lecturer->Department=$request->Department;
+        $lecturer->Phone_No=$request->Phone_No;
+        $lecturer->Office=$request->Office;
         $lecturer->Password = bcrypt($code);
         $lecturer->code = $code;
-        if($request->file('Avatar')) {
-            $file = $request->Avatar;
-            $fileName = date('Ymd').$file->getClientOriginalName();
-            $file->move(public_path('uploads/'), $fileName);
-            $lecturer->Avatar = $fileName;
-            $lecturer->save();
-        }
-
-        
-        return redirect()->route('admin.manage_lecturer')->with('msg:success','Lecturer created successfully');
+        $lecturer->save();
+      
+        return redirect()->route('admin.view_lecturer')->with('msg:success','Lecturer created successfully!');
     }
 
     public function listStudents()
@@ -186,5 +181,65 @@ class AdminController extends Controller
     public function view_lecturer(){
         return view('admin.view_lecturer')
             ->with('lecturers', Lecturer::all());
+    }
+
+
+    public function deleteStudent($id){
+        $user = Student::findOrFail($id);
+        $user->delete();
+        // DB::delete('delete from students where id=?',[$id]);
+        return redirect()->route('admin.view_student')->with('msg:success','Student Deleted Successfully');
+    }
+
+    public function deleteLecturer($id){
+        $user = Lecturer::findOrFail($id);
+        $user->delete();
+        // DB::delete('delete from students where id=?',[$id]);
+        return redirect()->route('admin.view_lecturer')->with('msg:success','Lecturer Deleted Successfully');
+    }
+
+    public function EditStudent($id){
+        $data['editStudent'] = Student::findOrFail($id);
+        $data['lecturers'] = Lecturer::all();
+        //dd( $data['editStudent']->toArray());
+        return view('admin.edit_student', $data);
+    }
+
+    public function editLecturer($id){
+        $data['editLecturer'] = Lecturer::findOrFail($id);
+        //dd( $data['editStudent']->toArray());
+        return view('admin.edit_lecturer', $data);
+    }
+
+
+
+    public function UpdateStudent(Request $request, $id){
+        $editStudent = Student::find($id);
+        $editStudent->First_name = $request->First_name;
+        $editStudent->Other_names = $request->Other_names;
+        $editStudent->Email = $request->Email;
+        $editStudent->Supervisor_id = $request->Supervisor_id;
+        $editStudent->RegNo = $request->RegNo;
+        $editStudent->Phone_no = $request->Phone_No;
+        $editStudent->Department = $request->Department;
+        $editStudent->Gender = $request->Gender;
+        
+        $editStudent->update();
+
+        return redirect()->route('admin.view_student')->with('msg:success','Student Updated Successfully');
+    }
+    public function UpdateLecturer(Request $request,$id){
+        $editLecturer=Lecturer::find($id);
+        $editLecturer->First_name=$request->First_name;
+        $editLecturer->Other_names=$request->Other_names;
+        $editLecturer->Email = $request->Email;
+        $editLecturer->Department=$request->Department;
+        $editLecturer->Staff_id=$request->Staff_id;
+        $editLecturer->Phone_No=$request->Phone_No;
+        $editLecturer->Office=$request->Office;
+        $editLecturer->update();
+    
+
+        return redirect()->route('admin.view_lecturer')->with('msg:success','Lecturer Updated Successfully');
     }
 }

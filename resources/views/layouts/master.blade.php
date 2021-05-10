@@ -50,6 +50,9 @@
                 </a>
             </li>
             <li class="nav-item">
+                @php
+                    $id=Auth::guard('student')->user()->id;
+                @endphp
                 <a class="nav-link" href="{{route('student.upload')}}">
                     <i class="fa fa-upload"></i>
                     <span style="font-size:15px;letter-spacing:1px;">Upload Chapters</span>
@@ -73,6 +76,13 @@
                     </a>
                 </li>
             <hr class="sidebar-divider">
+            <div class="sidebar-heading">Project</div>
+            <li class="nav-item">
+                    <a class="nav-link mb-2" href="{{ route('approved.project') }}">
+                        <i class="fa fa-eye"></i>
+                        <span style="font-size:15px;letter-spacing:1px;">Submit Topic</span>
+                    </a>
+                </li>
            @else
 
            <li class="nav-item">
