@@ -22,14 +22,18 @@ class LecturersSeeder extends Seeder
                 'Other_names' => 'Fagge',
                 'Email'=>'sultantech@gmail.com',
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
-                'Password'=> '1234'
+                'Password'=> '1234',
+                'Department' => 'Computer Science',
+                'Office' => '1'
             ],
             [
                 'First_Name' => 'Mallam',
                 'Other_names' => 'maryam',
                 'Email'=>'sultantech@yahoo.com',
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
-                'Password'=> '1234'
+                'Password'=> '1234',
+                'Department' => 'Computer Science',
+                'Office' => '2'
             ],
         ];
 

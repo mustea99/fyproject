@@ -23,7 +23,9 @@ class StudentsSeeder extends Seeder
                 'Email'=>'sultantech@gmail.com',
                 'Gender'=>'Male',
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
-                'Password'=> '1234'
+                'Password'=> '1234',
+                'Supervisor_id' => 1,
+                'Department' => 'Computer Science'
             ],
             [
                 'First_Name' => 'Musa',
@@ -32,11 +34,16 @@ class StudentsSeeder extends Seeder
                 'Email'=>'sultantech@yahoo.com',
                 'Gender'=>'Male',
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
-                'Password'=> '1234'
+                'Password'=> '1234',
+                'Supervisor_id' => 1,
+                'Department' => 'Computer Science'
             ],
         ];
     
         foreach($students as $student){
+            $rawPassword = $student['Password'];
+            $student['Password'] = Hash::make($rawPassword);
+            $student['code'] = $rawPassword;
             Student::create($student);
         }
     }

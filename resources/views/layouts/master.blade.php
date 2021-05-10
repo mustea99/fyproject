@@ -41,22 +41,24 @@
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-               Document
+               Project Proposals
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('student.proposal')}}">
                     <i class="fa fa-upload"></i>
-                    <span style="font-size:15px;letter-spacing:1px;"> Project Proposal</span>
+                    <span style="font-size:15px;letter-spacing:1px;"> List Proposals</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('student.proposal.add')}}">
+                    <i class="fa fa-plus"></i>
+                    <span style="font-size:15px;letter-spacing:1px;"> Create Proposal</span>
                 </a>
             </li>
             <li class="nav-item">
                 @php
                     $id=Auth::guard('student')->user()->id;
                 @endphp
-                <a class="nav-link" href="{{route('student.upload')}}">
-                    <i class="fa fa-upload"></i>
-                    <span style="font-size:15px;letter-spacing:1px;">Upload Chapters</span>
-                </a>
             </li>
            
             <hr class="sidebar-divider">
