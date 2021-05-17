@@ -55,13 +55,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('lecturer.manage_proposal') }}">
                     <i class="fa fa-eye"></i>
-                    <span>Manage Proposals</span>
+                    <span>View Proposals</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('lecturer.view_student_upload') }}">
                     <i class="fa fa-eye"></i>
-                    <span>Manage Documents</span>
+                    <span>View Documents</span>
                 </a>
             </li>
            

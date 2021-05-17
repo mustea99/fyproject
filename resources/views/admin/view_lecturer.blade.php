@@ -17,13 +17,12 @@
                 </div>
               </div>
               <div class="card-body">
-               
-               <div class="table-responsive">
-             <table class="table table-bordered table-striped table-responsive lecturer_table" style="margin-top:-15px;">
+          
+             <table class="table table-bordered " style="margin-top:-15px; ">
                 <th class="table-header">Sn</th>
                 <th class="table-header"> Name</th>
                 <th class="table-header">University Mail</th>
-                <th class="table-header">Staff ID</th>
+                {{-- <th class="table-header">Staff ID</th> --}}
                 <th class="table-header">Department</th>
                 <th class="table-header">Mobile No</th>
                 <th class="table-header">Action</th>
@@ -34,7 +33,7 @@
                       <td>{{ $lecturer->First_name }} {{ $lecturer->Other_names }}</td>
                      
                       <td>{{ $lecturer->Email }}</td>
-                      <td>{{ $lecturer->Staff_id }}</td>
+                      {{-- <td>{{ $lecturer->Staff_id }}</td> --}}
                       <td>{{ $lecturer->Department }}</td>
                       <td>{{ $lecturer->Phone_No }}</td>
                       <td>

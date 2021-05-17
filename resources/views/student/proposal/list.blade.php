@@ -5,8 +5,8 @@
 @section('content')
     <div class="container-fluid mt-4">
         <div class="card">
-            <div class="card-header">LIST PROJECT PROPOSALS</div>
-            <div class="card-body">
+            <div class="card-header font-weight-bold">LIST PROJECT PROPOSALS</div>
+            <div class="card-body ">
                 <div class="list-group">
                     @foreach ($proposals as $proposal)
                         <a href="{{ route('student.proposal.view', $proposal->id) }}"

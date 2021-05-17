@@ -4,7 +4,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Lecturer;
 use App\Models\NoticeBoard;
+use App\Models\ProjectChapter;
 use App\Models\Student;
+use App\Models\Proposal;
+use App\Models\Comment;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -99,7 +102,13 @@ class LecturerController extends Controller
 
 
     public function view_student_upload(){
-        return view('lecturer.view_student_upload');
+        $projectChapter=ProjectChapter::query()
+        ->select('project_chapters.*','students.First_name','students.Other_names','students.RegNo')
+        ->join('students','students.id','project_chapters.student')
+        ->where('students.Supervisor_id',auth::guard('lecturer')->user()->id)
+        ->get();
+        return view('lecturer.view_student_upload',['project_chapters'=>$projectChapter
+        ]);
     }
 
 
@@ -115,14 +124,44 @@ class LecturerController extends Controller
     }
 
 
-    public function send_feedback(){
-        return view('lecturer.send_feedback');
+    public function send_feedback($id){
+            $data['feedback'] = ProjectChapter::findOrFail($id);
+            $data['lecturers'] = Lecturer::all();
+            $data['proposals'] =Proposal::all();
+            $data['students']=Student::all();
+            //dd( $data['feedback']->toArray());
+            return view('lecturer.send_feedback', $data);
     }
 
 
     public function studProposal(){
+        $proposal=Proposal::query()
+        ->select('proposals.*','students.First_name','students.Other_names')
+        ->join('students','students.id','proposals.student')
+        ->where('students.Supervisor_id',auth::guard('lecturer')->user()->id)
+        ->get();
+       // @dd( $proposal);
 
+        return view('lecturer.manage_proposal',['proposals'=>$proposal]);
+    }
+    public function studChapter(){
+        $projectChapter=ProjectChapter::query()
+        ->select('project_chapters.*','students.First_name','students.Other_names')
+        ->join('students','students.id','project_chapters.student')
+        ->where('students.Supervisor_id',auth::guard('lecturer')->user()->id)
+        ->get();
+    }
+
+    public function sendFeed(Request $request, $id){
         
-        return view('lecturer.manage_proposal');
+        $comment  = new Comment();
+        $comment->student_id = $request->student_id;
+        $comment->lecturer_id = $request->lecturer_id;
+        $comment->title = $request->title;
+        $comment->chapter = $request->chapter;
+        $comment->comment = $request->comment;
+        $comment->save();
+        return redirect()->route('lecturer.view_student_upload')->with('msg:success','Comment sent successfully!');
+
     }
 }

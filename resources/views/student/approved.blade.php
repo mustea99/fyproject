@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Student|Submit Project Topic');
+@section('title','Student|Submit Project Topic')
 @section('content')
 @section ('content')
 @section('content')

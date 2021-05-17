@@ -56,6 +56,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('student.list.uploads')}}">
+                    <i class="fa fa-upload"></i>
+                    <span style="font-size:15px;letter-spacing:1px;"> List Uploads</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 @php
                     $id=Auth::guard('student')->user()->id;
                 @endphp

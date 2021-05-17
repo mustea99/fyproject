@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Student|View Notice Board');
+@section('title', 'Student|View Notice Board')
 @section ('content')
 
 <div class="card m-4">

@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('title', 'Student|Project Proposal');
+@section('title', 'Student|Project Proposal')
 @section ('content')
 <div class="col-xl-10">
-    <div class="card mt-4  ">
+    <div class="card mt-4 shadow">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Upload Proposal </h6>
+        <h6 class="m-0 font-weight-bold">Upload Proposal </h6>
       </div>
       <div class="card-body">
                 <form action="" method="POST" enctype="multipart/form-data">

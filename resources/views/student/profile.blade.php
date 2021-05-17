@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Student|Profile');
+@section('title', 'Student|Profile')
 @section ('content')
 @include('layouts.studentsidebar')
 <div class="col-xl-8 col-lg-7">

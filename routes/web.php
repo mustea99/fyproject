@@ -98,7 +98,7 @@ Route::middleware('student')
     ->group(function () {
         Route::get('/View Notice Board', [studentController::class, 'stud_view_notice'])->name('student.view_notice_board');
         Route::get('/view_supervisor', [StudentController::class, 'view_supervisor'])->name('student.view_supervisor');
-        Route::get('/proposal/', [StudentController::class, 'listProposals'])->name('student.proposal');
+        Route::get('/proposal', [StudentController::class, 'listProposals'])->name('student.proposal');
         Route::get('/proposal/add', [StudentController::class, 'showProposal'])->name('student.proposal.add');
         Route::post('/proposal/add', [StudentController::class, 'saveProposal'])->name('student.proposal.add');
         Route::get('/proposal/{pid}', [StudentController::class, 'viewProposal'])
@@ -110,6 +110,7 @@ Route::middleware('student')
 
         Route::get('student/view_feedback', [StudentController::class, 'view_feedback'])->name('student.view_feedback');
         Route::get('student/submit_approved', [StudentController::class, 'showApproved'])->name('approved.project');
+        Route::get('student/list_uploads',[StudentController::class,'showUploadsList'])->name('student.list.uploads');
     });
 
 //  All Lecturer Methods goes here !
@@ -129,5 +130,8 @@ Route::middleware('lecturer')
         Route::get('/view_student_upload', [LecturerController::class, 'view_student_upload'])->name('lecturer.view_student_upload');
         Route::get('/view_notice_board', [LecturerController::class, 'view_notice_board'])->name('lecturer.view_notice_board');
         Route::get('/send_feedback', [LecturerController::class, 'send_feedback'])->name('lecturer.send_feedback');
+        Route::get('/feedback/comment/{id}', [LecturerController::class, 'send_feedback'])->name('feedback.comment');
         Route::get('/manage_proposal', [LecturerController::class, 'studProposal'])->name('lecturer.manage_proposal');
+        Route::post('/send_feedback/{id}',[LecturerController::class,'sendFeed'])->name('send.feedback.submit');
+    
     });

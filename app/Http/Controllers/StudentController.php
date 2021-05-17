@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\Lecturer;
-use App\Models\Supervisor;
+use App\Models\Comment;
 use App\Models\NoticeBoard;
 use App\Models\ProjectChapter;
 use App\Models\Proposal;
@@ -178,8 +178,15 @@ class StudentController extends Controller
 
     public function listProposals()
     {
-        return view('student.proposal.list')
-            ->with('proposals', Proposal::all());
+        $proposal=Proposal::query()
+        ->select('proposals.*','proposals.lecturer')
+        ->join('students','students.id','proposals.student')
+        ->where('proposals.student',auth::guard('student')->user()->id)
+        ->get();
+        return view('student.proposal.list',[
+            'proposals'=>$proposal
+        ]);
+            
     }
 
 
@@ -197,6 +204,7 @@ class StudentController extends Controller
         ]);
 
         $currentStudent = Auth::guard('student')->user();
+       // @dd(Auth::guard('student')->user());
         $uploadedDoc = $request->file('document');
 
         $dName = microtime(true) . '.' . $uploadedDoc->getClientOriginalExtension();
@@ -232,14 +240,25 @@ class StudentController extends Controller
 
     public function view_feedback()
     {
-        return view('student.view_feedback');
+        $comment=Comment::query()
+        ->where('comments.student_id',auth::guard('student')->user()->id)
+        ->get();
+        return view('student.view_feedback',[
+            'comments'=>$comment
+        ]);
     }
 
-    public function createPassForm()
-    {
-        return view('student.create_password');
+   
+    public function showUploadsList(){
+        $chapter=ProjectChapter::query()
+        ->select('project_chapters.*','project_chapters.lecturer')
+        ->join('students','students.id','project_chapters.student')
+        ->where('project_chapters.student',auth::guard('student')->user()->id)
+        ->get();
+        return view ('student.list_uploads',[
+            'project_chapters'=>$chapter
+        ]);
     }
-    public function doCreatePass()
-    {
-    }
-}
+
+ }
+

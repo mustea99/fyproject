@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Student|Upload');
+@section('title', 'Student|Upload')
 @section('content')
     <div class="col-xl-10">
         <div class="card m-4">

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Student|View Supervisor');
+@section('title','Student|View Supervisor')
 @section('content')
 <div class="card m-4">
         <div class="card-header text-uppercase font-weight-bold">Student Supervisor</div>
