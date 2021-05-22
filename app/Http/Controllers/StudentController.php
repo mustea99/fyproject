@@ -186,7 +186,7 @@ class StudentController extends Controller
         return view('student.proposal.list',[
             'proposals'=>$proposal
         ]);
-            
+
     }
 
 
@@ -248,14 +248,14 @@ class StudentController extends Controller
         ]);
     }
 
-   
+
     public function showUploadsList(){
         $chapter = ProjectChapter::query()
             ->select('project_chapters.*','project_chapters.lecturer')
             ->join('students','students.id','project_chapters.student')
             ->where('project_chapters.student',auth::guard('student')->user()->id)
             ->get();
-        
+
         return view ('student.list_uploads',[
             'project_chapters'=>$chapter
         ]);
@@ -270,7 +270,8 @@ class StudentController extends Controller
 
             Comment::post([
                 'uploadId' => $request['id'],
-                'message' => $validated['message']
+                'message' => $validated['message'],
+                'sender_type' => 'student'
             ]);
         }
 

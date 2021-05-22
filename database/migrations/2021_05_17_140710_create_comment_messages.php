@@ -18,7 +18,8 @@ class CreateCommentMessages extends Migration
             $table->bigInteger('comment');
             $table->bigInteger('sender');
             $table->bigInteger('receiver');
-            $table->string('message');
+            $table->string('sender_type');
+            $table->string('message', 5000);
             $table->timestamps();
         });
     }
