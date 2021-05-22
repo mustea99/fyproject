@@ -15,11 +15,7 @@ class CreateComments extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('student_id');
-            $table->bigInteger('lecturer_id');
-            $table->string('title');
             $table->string('chapter');
-            //$table->string('comment',5000);
             $table->timestamps();
         });
     }

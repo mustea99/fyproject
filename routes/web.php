@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\LecturerController;
 use Illuminate\Support\Facades\Auth;
 
@@ -111,6 +112,13 @@ Route::middleware('student')
         Route::get('student/view_feedback', [StudentController::class, 'view_feedback'])->name('student.view_feedback');
         Route::get('student/submit_approved', [StudentController::class, 'showApproved'])->name('approved.project');
         Route::get('student/list_uploads',[StudentController::class,'showUploadsList'])->name('student.list.uploads');
+        Route::prefix('uploads')->name('student.uploads.')
+            ->group(function(){
+                Route::get('/', [StudentController::class,'showUploadsList'])->name('index');
+                Route::match(['get', 'post'], '/{id}', [StudentController::class,'viewUploadInfo'])
+                    ->whereNumber('id')
+                    ->name('view');
+            });
     });
 
 //  All Lecturer Methods goes here !
@@ -133,5 +141,8 @@ Route::middleware('lecturer')
         Route::get('/feedback/comment/{id}', [LecturerController::class, 'send_feedback'])->name('feedback.comment');
         Route::get('/manage_proposal', [LecturerController::class, 'studProposal'])->name('lecturer.manage_proposal');
         Route::post('/send_feedback/{id}',[LecturerController::class,'sendFeed'])->name('send.feedback.submit');
-    
+        // Route::get('/import','ImportController@store');
     });
+
+    Route::post('/import',[ImportController::class,'store']);
+

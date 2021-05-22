@@ -15,7 +15,7 @@
 </head>
 
 <body id="page-top">
-<div id="wrapper" style="background-color: #a0aec0">
+<div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar" >
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span style="font-size:14px;color:blue;">Dashboard</span></a>
+                    <span style="font-size:14px;">Dashboard</span></a>
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
@@ -39,13 +39,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_lecturer')}}" >
                     <i class="fa fa-user"></i>
-                    <span style="font-size:14px;color:blue;">Manage Lecturer</span>
+                    <span style="font-size:14px;">Manage Lecturer</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.view_lecturer')}}" style="font-size:20px;">
                     <i class="fa fa-eye"></i>
-                    <span style="font-size:14px;color:blue;">View Lecturers</span>
+                    <span style="font-size:14px;">View Lecturers</span>
                 </a>
             </li>
             <hr class="sidebar-divider">
@@ -56,13 +56,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_student')}}" >
                     <i class="fa fa-user"></i>
-                    <span style="font-size:14px;color:blue;">Manage Student</span>
+                    <span style="font-size:14px;">Manage Student</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.view_student')}}" >
                     <i class="fa fa-eye"></i>
-                    <span style="font-size:14px;color:blue;">View Students</span>
+                    <span style="font-size:14px;">View Students</span>
                 </a>
             </li>
             <hr class="sidebar-divider">
@@ -72,7 +72,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.post')}}" >
                     <i class="fa fa-envelope"></i>
-                    <span style="font-size:14px;color:blue;">Notice Board</span>
+                    <span style="font-size:14px;">Notice Board</span>
                 </a>
             </li>
             <hr class="sidebar-divider">
@@ -82,7 +82,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_project')}}" style="font-size:20px;">
                     <i class="fa fa-wallet"></i>
-                    <span style="font-size:14px;color:blue;"> Manage Project</span>
+                    <span style="font-size:14px;"> Manage Project</span>
                 </a>
             </li>
         {{-- @else

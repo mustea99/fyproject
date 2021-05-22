@@ -15,6 +15,7 @@ class CreateCommentMessages extends Migration
     {
         Schema::create('comment_messages', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('comment');
             $table->bigInteger('sender');
             $table->bigInteger('receiver');
             $table->string('message');

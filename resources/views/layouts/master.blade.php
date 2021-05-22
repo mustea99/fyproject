@@ -45,7 +45,7 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('student.proposal')}}">
-                    <i class="fa fa-upload"></i>
+                    <i class="fa fa-list"></i>
                     <span style="font-size:15px;letter-spacing:1px;"> List Proposals</span>
                 </a>
             </li>
@@ -56,8 +56,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('student.list.uploads')}}">
-                    <i class="fa fa-upload"></i>
+                <a class="nav-link" href="{{ route('student.uploads.index')}}">
+                    <i class="fa fa-list"></i>
                     <span style="font-size:15px;letter-spacing:1px;"> List Uploads</span>
                 </a>
             </li>
@@ -87,7 +87,7 @@
             <div class="sidebar-heading">Project</div>
             <li class="nav-item">
                     <a class="nav-link mb-2" href="{{ route('approved.project') }}">
-                        <i class="fa fa-eye"></i>
+                        <i class="fa fa-list"></i>
                         <span style="font-size:15px;letter-spacing:1px;">Submit Topic</span>
                     </a>
                 </li>

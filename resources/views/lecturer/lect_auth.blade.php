@@ -60,9 +60,9 @@
                                           <input type="email" class="form-control mb-4"placeholder="University Mail" required name="Email">
                                         </div>
                                         <div class="form-group">
-                                          <button type="submit" class="btn btn-primary btn-block">Authenticate</a>
+                                          <button type="submit" class="btn btn-info btn-block" style="font-weight:bolder;letter-spacing:2px;">Authenticate</a>
                                         </div>
-                                        <div><h6 class="text-center text-white">Already authenticated ? <a class="link shadow" href="{{ route('lecturer.auth.login') }}" style=" text-decoration:none;font-weight:bolder;font-size:20px;">Login</a></h6></div>
+                                        <div><h6 class="text-center text-white" style="font-weight:bolder;letter-spacing:2px;">Already authenticated ? <a class="link shadow" href="{{ route('lecturer.auth.login') }}" style=" text-decoration:none;font-weight:bolder;font-size:20px;">Login</a></h6></div>
                                      
                                       </form>
                                     </div>

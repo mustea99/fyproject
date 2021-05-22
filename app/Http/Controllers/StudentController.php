@@ -78,7 +78,7 @@ class StudentController extends Controller
     {
         validator()->make(request()->only('RegNo', 'Password'), [
             'RegNo' => 'required|min:10|max:99',
-            'Password' => 'required|min:4|max:99',
+            'Password' => 'required|min:3|max:99',
         ])->validate();
 
 
@@ -250,15 +250,33 @@ class StudentController extends Controller
 
    
     public function showUploadsList(){
-        $chapter=ProjectChapter::query()
-        ->select('project_chapters.*','project_chapters.lecturer')
-        ->join('students','students.id','project_chapters.student')
-        ->where('project_chapters.student',auth::guard('student')->user()->id)
-        ->get();
+        $chapter = ProjectChapter::query()
+            ->select('project_chapters.*','project_chapters.lecturer')
+            ->join('students','students.id','project_chapters.student')
+            ->where('project_chapters.student',auth::guard('student')->user()->id)
+            ->get();
+        
         return view ('student.list_uploads',[
             'project_chapters'=>$chapter
         ]);
     }
 
+    public function viewUploadInfo(Request $request)
+    {
+        if('POST' == $request->getMethod()){
+            $validated = $request->validate([
+                'message' => 'required|min:2|max:500'
+            ]);
+
+            Comment::post([
+                'uploadId' => $request['id'],
+                'message' => $validated['message']
+            ]);
+        }
+
+        $upload = ProjectChapter::query()->find($request['id']);
+        $comments = Comment::getComments($request['id']);
+        return view('student.view_upload_info', compact('upload', 'comments'));
+    }
  }
 

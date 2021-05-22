@@ -16,8 +16,10 @@
                     <tbody>
 
                     @foreach ($project_chapters as $project_chapter)
-                    <tr>
-                        <td> {{ $project_chapter->title}}</td>
+                    <tr class="table table-hover">
+                        <td> 
+                            <a href="{{ route('student.uploads.view', $project_chapter->id) }}">{{ $project_chapter->title}}</a>
+                        </td>
                         <td> {{ $project_chapter->chapter}}</td>
                         <td> {{ $project_chapter->created_at}}</td>
                         <td><a class="btn btn-danger" href=""type="submit"><span><i class="fa fa-trash-alt"></i></span></a></td>

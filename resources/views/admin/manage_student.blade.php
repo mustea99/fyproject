@@ -16,9 +16,9 @@
                 </div>
               </div>
               <div class="card-body">
-              <form method="POST" action="" enctype="multipart/form-data">
+              <form method="POST" action="{{ url('/import') }}" enctype="multipart/form-data">
                 @csrf
-                    <div class="form-row">
+                    {{-- <div class="form-row">
                         <div class="col mb-2">
                             <input type="text" name="First_name" placeholder="First Name" class="form-control @error('First_name') is-invalid @enderror" value="{{old('First_name')}}" >
                             @error('First_name')
@@ -84,9 +84,14 @@
                           </div>
                       
                       </div>
-                    
-                    <button class="btn btn-md btn-primary mt-4">
-                       Add
+                     --}}
+                     <div class="form-row">
+                       <div class="col">
+                     <input type="file" name="file" class="form-control">
+                       </div>
+                     </div>
+                    <button class="btn btn-md btn-primary mt-4" type="submit">
+                      Import
                     </button>
                </form> 
               </div>
