@@ -23,10 +23,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
+require 'lecturer.php';
 
 Route::get('/', function () {
     return redirect()->to('/student/login');
@@ -88,7 +85,6 @@ Route::get('student/create_password', [StudentController::class, 'createPassForm
 Route::post('student/create_password', [StudentController::class, 'doCreatePass'])->name('student.create_password.submit');
 
 
-
 Route::get('student/login', [StudentController::class, 'loginForm'])->name('student.auth.login');
 Route::post('student/login', [StudentController::class, 'studLogin'])->name('student.auth.login.submit');
 
@@ -111,38 +107,15 @@ Route::middleware('student')
 
         Route::get('student/view_feedback', [StudentController::class, 'view_feedback'])->name('student.view_feedback');
         Route::get('student/submit_approved', [StudentController::class, 'showApproved'])->name('approved.project');
-        Route::get('student/list_uploads',[StudentController::class,'showUploadsList'])->name('student.list.uploads');
+        Route::get('student/list_uploads', [StudentController::class, 'showUploadsList'])->name('student.list.uploads');
         Route::prefix('uploads')->name('student.uploads.')
-            ->group(function(){
-                Route::get('/', [StudentController::class,'showUploadsList'])->name('index');
-                Route::match(['get', 'post'], '/{id}', [StudentController::class,'viewUploadInfo'])
+            ->group(function () {
+                Route::get('/', [StudentController::class, 'showUploadsList'])->name('index');
+                Route::match(['get', 'post'], '/{id}', [StudentController::class, 'viewUploadInfo'])
                     ->whereNumber('id')
                     ->name('view');
             });
     });
 
-//  All Lecturer Methods goes here !
-Route::get('lecturer/authentication', [LecturerController::class, 'lect_auth']);
-Route::post('lecturer/authentication', [LecturerController::class, 'studAuth'])->name('lecturer.lect_auth.submit');
-
-
-Route::get('lecturer/login', [LecturerController::class, 'showLoginForm'])->name('lecturer.auth.login');
-Route::post('lecturer/login', [LecturerController::class, 'doLogin'])->name('lecturer.auth.login.submit');
-
-Route::middleware('lecturer')
-    ->prefix('lecturer')
-    ->group(function () {
-        Route::post('/logout', [LecturerController::class, 'logout'])->name('lecturer.logout');
-        Route::get('/view_student/{id}', [LecturerController::class, 'viewstudent'])->name('lecturer.view_student');
-        Route::get('/grade_student', [LecturerController::class, 'grade_student'])->name('lecturer.grade_student');
-        Route::get('/view_student_upload', [LecturerController::class, 'view_student_upload'])->name('lecturer.view_student_upload');
-        Route::get('/view_notice_board', [LecturerController::class, 'view_notice_board'])->name('lecturer.view_notice_board');
-        Route::get('/send_feedback', [LecturerController::class, 'send_feedback'])->name('lecturer.send_feedback');
-        Route::get('/feedback/comment/{id}', [LecturerController::class, 'send_feedback'])->name('feedback.comment');
-        Route::get('/manage_proposal', [LecturerController::class, 'studProposal'])->name('lecturer.manage_proposal');
-        Route::post('/send_feedback/{id}',[LecturerController::class,'sendFeed'])->name('send.feedback.submit');
-        // Route::get('/import','ImportController@store');
-    });
-
-    Route::post('/import',[ImportController::class,'store']);
+Route::post('/import', [ImportController::class, 'store']);
 

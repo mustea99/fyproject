@@ -11,17 +11,17 @@ class Proposal extends Model
 
     protected $fillable = ['student', 'lecturer', 'title', 'document', 'status'];
 
-    public function getTextualStatus()
+    public function getTextualStatus(?string $htmlClass = null): string
     {
-        switch($this->status){
+        switch ($this->status) {
             case 0:
-                return '<span class="badge badge-info badge-pill">Pending</span>';
-            break;
+                return '<span class="badge badge-info badge-pill ' . $htmlClass . '">Pending</span>';
+                break;
             case 1:
-                return '<span class="badge badge-success badge-pill">Accepted</span>';
-            break;
+                return '<span class="badge badge-success badge-pill ' . $htmlClass . '">Accepted</span>';
+                break;
             default:
-                return '<span class="badge badge-danger badge-pill">Declined</span>';
+                return '<span class="badge badge-danger badge-pill ' . $htmlClass . '">Rejected</span>';
         }
     }
 }

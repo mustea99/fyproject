@@ -40,7 +40,8 @@ class Comment extends Model
             'sender' => $student->id,
             'receiver' => $student->Supervisor_id,
             'comment' => self::getProposalComment($commentData['uploadId'])->id,
-            'message' => $commentData['message']
+            'sender_type' => $commentData['sender_type'],
+            'message' => $commentData['message'],
         ]);
     }
 

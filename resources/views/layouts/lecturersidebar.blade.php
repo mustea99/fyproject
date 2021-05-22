@@ -22,67 +22,61 @@
             </div>
             <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
         </a>
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('lecturer') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-               Student
-            </div>
-            <li class="nav-item">
-                @php
-                    $id = Auth::guard('lecturer')->user()->id;
-                    
-                @endphp
-                <a class="nav-link" href="{{route ('lecturer.view_student', $id) }}">
-                    <i class="fa fa-eye"></i>
-                    <span>My Students</span>
-                </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('lecturer.grade_student') }}">
-                  <i class="fa fa-eye"></i>
-                  <span>Grade Students</span>
-              </a>
-          </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-               Document
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('lecturer.manage_proposal') }}">
-                    <i class="fa fa-eye"></i>
-                    <span>View Proposals</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('lecturer.view_student_upload') }}">
-                    <i class="fa fa-eye"></i>
-                    <span>View Documents</span>
-                </a>
-            </li>
-           
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Information
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('lecturer.view_notice_board')}}">
-                    <i class="fa fa-envelope"></i>
-                    <span> View Notice Board</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="{{route('lecturer.send_feedback')}}">
-                        <i class="fa fa-envelope"></i>
-                        <span> Send Feedback</span>
-                    </a>
-                </li>
-            <hr class="sidebar-divider">
-           
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('lecturer') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+            Student
+        </div>
+        <li class="nav-item">
+            @php
+                $id = Auth::guard('lecturer')->user()->id;
+
+            @endphp
+            <a class="nav-link" href="{{route ('lecturer.view_student', $id) }}">
+                <i class="fa fa-eye"></i>
+                <span>My Students</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('lecturer.grade_student') }}">
+                <i class="fa fa-eye"></i>
+                <span>Grade Students</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+            Document
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('lecturer.proposal.index') }}">
+                <i class="fa fa-eye"></i>
+                <span>View Proposals</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('lecturer.view_student_upload') }}">
+                <i class="fa fa-eye"></i>
+                <span>View Documents</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+            Information
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('lecturer.view_notice_board')}}">
+                <i class="fa fa-envelope"></i>
+                <span> View Notice Board</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider">
+
     </ul>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -92,12 +86,12 @@
                 <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-                            <form action="{{ route('lecturer.logout') }}" id="formLogout" method="post">@csrf</form>
-                            <div style="margin-left:900px;color:white; text-transform:uppercase;" > 
-                            <a class="btn btn-link " onclick="document.getElementById('formLogout').submit();">
-                                <span class="fas fa-sign-out-alt  text-white-400">Logout</span>
-                                </a></div>
-                        
+                <form action="{{ route('lecturer.logout') }}" id="formLogout" method="post">@csrf</form>
+                <div style="margin-left:900px;color:white; text-transform:uppercase;">
+                    <a class="btn btn-link " onclick="document.getElementById('formLogout').submit();">
+                        <span class="fas fa-sign-out-alt  text-white-400">Logout</span>
+                    </a></div>
+
             </nav>
             <!-- Topbar -->
 
@@ -148,6 +142,7 @@
 <script src="{{asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
 <script src="{{asset('assets/js/demo/chart-area-demo.js') }}"></script>
 
+@yield('script')
 
 </body>
 

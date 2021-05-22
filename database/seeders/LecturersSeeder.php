@@ -38,6 +38,7 @@ class LecturersSeeder extends Seeder
         ];
 
         foreach($lecturers as $lecturer){
+            $lecturer['Password'] = Hash::make($lecturer['Password']);
             Lecturer::query()->create($lecturer);
         }
     }
