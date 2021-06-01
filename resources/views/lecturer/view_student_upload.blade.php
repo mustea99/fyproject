@@ -30,10 +30,10 @@
             <td> {{ $project_chapter->title }}</td>
             <td>{{ $project_chapter->chapter }}</td>
             <td> <a href="{{ url("uploads/".$project_chapter->document)}}" class="btn btn-primary"><span><i class=" fa fa-download">&nbsp;Download</i></span></a></td>
-             <td><a  href="{{ route('feedback.comment', $project_chapter->id) }}"class="btn btn-info"><i class="fa fa-edit"></i></a></td> 
-        </tr> 
-        @endforeach 
-    </tbody>    
+             <td><a  href=""class="btn btn-info"><i class="fa fa-edit"></i></a></td>
+        </tr>
+        @endforeach
+    </tbody>
 </table>
           </div>
         </div>
