@@ -94,6 +94,7 @@ Route::post('student/logout', [StudentController::class, 'logout'])->name('stude
 Route::middleware('student')
     ->prefix('student')
     ->group(function () {
+        Route::get('chat', [MainController::class, 'chat']);
         Route::get('/View Notice Board', [studentController::class, 'stud_view_notice'])->name('student.view_notice_board');
         Route::get('/view_supervisor', [StudentController::class, 'view_supervisor'])->name('student.view_supervisor');
         Route::get('/proposal', [StudentController::class, 'listProposals'])->name('student.proposal');
