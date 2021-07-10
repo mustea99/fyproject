@@ -51,7 +51,7 @@ class LecturerController extends Controller
             if (Hash::check($request->Password, $lecturer->Password)) {
                 Auth::guard('lecturer')->login($lecturer);
                 return redirect()
-                    ->route('lecturer.grade_student')
+                    ->route('lecturer.view_notice_board')
                     ->with('msg:success', 'You are logged in successfully.');
             }
         }
@@ -167,5 +167,33 @@ class LecturerController extends Controller
         $comment->save();
         return redirect()->route('lecturer.view_student_upload')->with('msg:success', 'Comment sent successfully!');
 
+    }
+    public function showUploadsList(){
+        $chapter=ProjectChapter::query()
+        ->select('project_chapters.*', 'students.First_name', 'students.Other_names','students.RegNo')
+            ->join('students', 'students.id', 'project_chapters.student')
+            ->where('students.Supervisor_id', auth::guard('lecturer')->user()->id)
+            ->get();
+        return view('lecturer.list_upload',['project_chapters'=>$chapter
+
+        ]);
+    }
+    public function viewUploadInfo(Request $request)
+    {
+        if('POST' == $request->getMethod()){
+            $validated = $request->validate([
+                'message' => 'required|min:2|max:500'
+            ]);
+
+            Comment::post([
+                'uploadId' => $request['id'],
+                'message' => $validated['message'],
+                'sender_type' => 'lecturer'
+            ]);
+        }
+
+        $upload = ProjectChapter::query()->find($request['id']);
+        $comments = Comment::getComments($request['id']);
+        return view('lecturer.view_upload_info', compact('upload', 'comments'));
     }
 }

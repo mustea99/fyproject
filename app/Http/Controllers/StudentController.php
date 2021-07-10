@@ -14,6 +14,7 @@ use App\Models\Comment;
 use App\Models\NoticeBoard;
 use App\Models\ProjectChapter;
 use App\Models\Proposal;
+use App\Models\Approved_project;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Matcher\Not;
 
@@ -23,6 +24,17 @@ class StudentController extends Controller
     public function showApproved()
     {
         return view('student.approved');
+    }
+    public function submitApproved(Request $request){
+       $Approved= new Approved_project;
+       $Approved->Name=$request->Name;
+       $Approved->RegNo=$request->RegNo;
+       $Approved->ProjectTitle=$request->ProjectTitle;
+       $Approved->CaseStudy=$request->CaseStudy;
+       $Approved->save();
+       return redirect()
+       ->route('approved.project')
+       ->with('msg:success','Project Topic Submitted Successfully!');
     }
 
     public function view_supervisor()

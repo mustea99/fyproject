@@ -10,13 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use App\Models\Approved_project;
 
 
 
 class AdminController extends Controller
 {
     public function admindash(){
-        return view('admin/dashboard');
+        $Approved= Approved_project::all();
+        return view('admin/dashboard',[
+            'approved_projects'=>$Approved
+        ]);
     }
     
     
@@ -27,10 +31,15 @@ class AdminController extends Controller
     public function project(){
         return view ('admin/manage_project');
     }
-    
     public function post(){
+        $data=NoticeBoard::query()->select('Recipient_type', 'id')
+            ->groupBy('Recipient_type', 'id')
+            ->get()
+            ->first();
+ 
+
         return view('admin/post', [
-            'noticeboards' => NoticeBoard::all(),
+            'noticeboards' => $data
         ]);
     }
 
@@ -76,8 +85,6 @@ class AdminController extends Controller
         ]);
     }
     public function view_notice(){
-        
-       
          return view('admin.post', [
         'noticeboards' => NoticeBoard::all()
         ]);
@@ -151,9 +158,11 @@ class AdminController extends Controller
         $data=$request->validate([
             'First_name'=>'required|min:3|max:99',
             'Other_names'=>'required|min:3|max:99',
-            'Email'=>'required|min:10|max:99',
-            
-            
+            'Email'=>'required|min:10|max:99|unique:lecturers',
+            'Staff_id'=>'required|min:10|max:20|unique:lecturers',
+            'Department'=>'required',
+            'Phone_No'=>'required|unique:lecturers|min:11|max:15',
+            'Office'=>'required|unique:lecturers'
 
         ]);
         $code = rand(0000, 9999);

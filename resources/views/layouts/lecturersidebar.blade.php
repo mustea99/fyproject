@@ -20,7 +20,7 @@
             <div class="sidebar-brand-icon">
                 {{-- <img src="{{asset ('assets/img/logo/adminlogo3.jpg')}}" width="100px" height="100px" style="border-radius:200px;">  --}}
             </div>
-            <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
+            <div class="sidebar-brand-text mx-3">LECTURER</div>
         </a>
         <hr class="sidebar-divider my-0">
         <li class="nav-item">
@@ -42,12 +42,7 @@
                 <span>My Students</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('lecturer.grade_student') }}">
-                <i class="fa fa-eye"></i>
-                <span>Grade Students</span>
-            </a>
-        </li>
+        
         <hr class="sidebar-divider">
         <div class="sidebar-heading">
             Document
@@ -62,6 +57,12 @@
             <a class="nav-link" href="{{ route('lecturer.view_student_upload') }}">
                 <i class="fa fa-eye"></i>
                 <span>View Documents</span>
+            </a>
+        </li>
+        <li  class="nav-item">
+            <a class="nav-link" href="{{route('lecturer.list_uploads') }}">
+                <i class=" fa fa-list"></i>
+                <span>List Upload</span>
             </a>
         </li>
 

@@ -22,6 +22,10 @@ Route::middleware('lecturer')
         Route::get('/grade_student', [LecturerController::class, 'grade_student'])->name('grade_student');
         Route::get('/view_student_upload', [LecturerController::class, 'view_student_upload'])->name('view_student_upload');
         Route::get('/view_notice_board', [LecturerController::class, 'view_notice_board'])->name('view_notice_board');
+        Route::get('/list_uploads', [LecturerController::class, 'showUploadsList'])->name('list_uploads');
+        Route::match(['get', 'post'], '/list_uploads/{id}', [LecturerController::class, 'viewUploadInfo'])
+        ->whereNumber('id')
+        ->name('view_upload');
 
         //PROPOSALS
         Route::prefix('proposal')

@@ -76,7 +76,7 @@
                                    <tr>
                                    <td>{{ $noticeboard->id}}</td>
                                    <td>{{ $noticeboard->Recipient_type }}</td>
-                                   <td>{{ $noticeboard->Message }}</td>
+                                   <td>{{ $noticeboard->Recipient_type[0]->Message }}</td>
                                    <td>{{ $noticeboard->created_at }}</td>
                                    <td>
                                       <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>

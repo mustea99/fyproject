@@ -17,12 +17,12 @@ class CreateLecturersTable extends Migration
             $table->id();
             $table->string('First_name', 50);
             $table->string('Other_names', 50);
-            $table->string('Email', 150);
+            $table->string('Email', 150)->unique();
             $table->string('Avatar', 150)->nullable();
-            $table->string('Staff_id',50)->nullable();
+            $table->string('Staff_id',50)->nullable()->unique();
             $table->string('Department',100);
-            $table->string('Phone_No')->nullable();
-            $table->string('Office');
+            $table->string('Phone_No')->unique();
+            $table->string('Office')->unique();
             $table->string('Password', 150);
             $table->integer('code')->nullable();
             $table->timestamps();

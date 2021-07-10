@@ -75,6 +75,7 @@ Route::prefix('admin')->group(function () {
         Route::get('view_lecturer', [Admincontroller::class, 'view_lecturer'])->name('admin.view_lecturer');
     });
 });
+Route::post('/importLecturer', [ImportController::class, 'storeLecturer']);
 
 // All Student Methods goes here !
 Route::get('student/authentication', [StudentController::class, 'studAuthForm']);
@@ -107,6 +108,7 @@ Route::middleware('student')
 
         Route::get('student/view_feedback', [StudentController::class, 'view_feedback'])->name('student.view_feedback');
         Route::get('student/submit_approved', [StudentController::class, 'showApproved'])->name('approved.project');
+        Route::post('student/submit_approved', [StudentController::class, 'submitApproved'])->name('approved.submit');
         Route::get('student/list_uploads', [StudentController::class, 'showUploadsList'])->name('student.list.uploads');
         Route::prefix('uploads')->name('student.uploads.')
             ->group(function () {

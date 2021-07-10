@@ -20,7 +20,7 @@
             <div class="sidebar-brand-icon">
                 {{-- <img src="{{asset ('assets/img/logo/adminlogo3.jpg')}}" width="100px" height="100px" style="border-radius:200px;">  --}}
             </div>
-            <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
+            <div class="sidebar-brand-text mx-3">STUDENT</div>
         </a>
         @if(auth()->guard('student')->check())
             <hr class="sidebar-divider my-0">
@@ -77,12 +77,12 @@
                     <span style="font-size:15px;letter-spacing:1px;"> View Notice Board</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                     <a class="nav-link mb-2" href="{{route ('student.view_feedback') }}">
                         <i class="fa fa-eye"></i>
                         <span style="font-size:15px;letter-spacing:1px;"> View Feedback</span>
                     </a>
-                </li>
+                </li> --}}
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Project</div>
             <li class="nav-item">

@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('Phone_No')->nullable();
             $table->string('Department',100);
             $table->string('Gender',100);
-            $table->integer('Supervisor_id');
+            $table->integer('Supervisor_id')->nullable();
             $table->string('Password',100);
             $table->integer('code')->nullable();
             $table->timestamps();

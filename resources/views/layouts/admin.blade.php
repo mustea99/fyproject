@@ -22,7 +22,7 @@
             <div class="sidebar-brand-icon">
                 {{-- <img src="{{asset ('assets/img/logo/adminlogo3.jpg')}}" width="100px" height="100px" style="border-radius:200px;">  --}}
             </div>
-            <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
+            <div class="sidebar-brand-text mx-3">@if(auth()->guard('admin')->check())ADMIN @endif</div>
         </a>
 
         @if(auth()->guard('admin')->check())
@@ -75,7 +75,7 @@
                     <span style="font-size:14px;">Notice Board</span>
                 </a>
             </li>
-            <hr class="sidebar-divider">
+            {{-- <hr class="sidebar-divider">
             <div class="sidebar-heading">
                Project
             </div>
@@ -84,7 +84,7 @@
                     <i class="fa fa-wallet"></i>
                     <span style="font-size:14px;"> Manage Project</span>
                 </a>
-            </li>
+            </li> --}}
         {{-- @else
             <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.login')}}">

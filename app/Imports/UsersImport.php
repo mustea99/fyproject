@@ -6,6 +6,7 @@ use App\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\withHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 class UsersImport implements ToModel, withHeadingRow
 {
     use importable;
