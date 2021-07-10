@@ -4,6 +4,7 @@
 //  All Lecturer Methods goes here !
 use App\Http\Controllers\Lecturer\ProposalController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('lecturer/authentication', [LecturerController::class, 'lect_auth']);
@@ -17,6 +18,7 @@ Route::middleware('lecturer')
     ->prefix('lecturer')
     ->name('lecturer.')
     ->group(function () {
+        Route::get('chat', [MainController::class, 'chat']);
         Route::post('/logout', [LecturerController::class, 'logout'])->name('logout');
         Route::get('/view_student/{id}', [LecturerController::class, 'viewstudent'])->name('view_student');
         Route::get('/grade_student', [LecturerController::class, 'grade_student'])->name('grade_student');

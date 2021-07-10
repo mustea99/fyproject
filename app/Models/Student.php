@@ -12,11 +12,16 @@ class Student extends User
     use HasFactory;
 
     protected $fillable = [
-        'First_name', 'Other_names', 'RegNo', 'Email', 'Phone_No','Department','Gender','Supervisor_id', 'Password'
+        'First_name', 'Other_names', 'RegNo', 'Email', 'Phone_No', 'Department', 'Gender', 'Supervisor_id', 'Password'
     ];
 
-    public function getLectuere(){
+    public function getLectuere()
+    {
         return $this->belongsTo(Lecturer::class, 'Supervisor_id', 'id');
     }
 
+    public function getFullName(): string
+    {
+        return "{$this['First_name']} {$this['Other_names']}";
+    }
 }

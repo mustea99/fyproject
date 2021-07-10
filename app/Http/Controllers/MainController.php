@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     public function index()
     {
         echo "Hello world";
+    }
+
+    public function chat()
+    {
+        if (Auth::guard('lecturer')->check()) {
+            return view('lecturer.chat');
+        }
+
+        return view('student.chat');
     }
 
     public function testView()
@@ -20,7 +30,7 @@ class MainController extends Controller
     {
         $name = strtoupper('ahmad');
 
-        return view('args',['suna' => $name, 'fname' => 'Musty']);
+        return view('args', ['suna' => $name, 'fname' => 'Musty']);
     }
 
     public function checkPass()
