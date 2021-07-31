@@ -32,12 +32,10 @@ class AdminController extends Controller
         return view ('admin/manage_project');
     }
     public function post(){
-        $data=NoticeBoard::query()->select('Recipient_type', 'id')
-            ->groupBy('Recipient_type', 'id')
-            ->get()
-            ->first();
- 
-
+         $data=NoticeBoard::query()->select('Recipient_type')
+             ->groupBy('Recipient_type')
+             ->get();
+        
         return view('admin/post', [
             'noticeboards' => $data
         ]);

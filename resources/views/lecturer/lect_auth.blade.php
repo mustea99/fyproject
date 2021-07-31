@@ -12,7 +12,7 @@
             <title>Lecturer Authentication Page </title>
     </head>
     
-<body style="background-image:url({{asset ('assets/img/logo/admin-back3.jpg') }})">
+<body >
      
 
     {{-- <div class="d-flex justify-content-center">
@@ -48,7 +48,7 @@
                
                     --}}
                
-                    <div style="margin-top:100px; letter-spacing:3px;padding:2px;text-transform:uppercase;font-weight:bold;"><h2 class="text-center text-white mt-4 shadow ">Supervisor Authentication</h2></div>
+                    <div style=" letter-spacing:2px;padding:2px;text-transform:uppercase;font-weight:bold;"><h4 class="text-center text-info mt-4 "style="font-weight:bolder;">Supervisor Authentication</h4></div>
                     <div class="container-login">
                         <div class=" col-lg-12 mt-4">
                                 @php
@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                           <button type="submit" class="btn btn-info btn-block" style="font-weight:bolder;letter-spacing:2px;">Authenticate</a>
                                         </div>
-                                        <div><h6 class="text-center text-white" style="font-weight:bolder;letter-spacing:2px;">Already authenticated ? <a class="link shadow" href="{{ route('lecturer.auth.login') }}" style=" text-decoration:none;font-weight:bolder;font-size:20px;">Login</a></h6></div>
+                                        <div><h6 class="text-center text-azure" style="font-weight:bolder;letter-spacing:2px;">Already authenticated ? <a class="link text-info" href="{{ route('lecturer.auth.login') }}" style=" text-decoration:none;font-weight:bolder;font-size:18px;">Login</a></h6></div>
                                      
                                       </form>
                                     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin|Manage Student')
+@section('title', 'Project Coordinator|Import Student')
 @section('content')
 
         <!-- Topbar -->

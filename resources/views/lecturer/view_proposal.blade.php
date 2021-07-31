@@ -4,9 +4,9 @@
 
 
 @section('content')
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-uppercase font-weight-bold d-flex justify-content-between p-3">
                         <span class="mt-1">Proposal Information</span>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="card">
                     <div class="card-header text-uppercase font-weight-bold">Proposal Chapters</div>
                     <div class="card-body">
@@ -65,7 +65,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

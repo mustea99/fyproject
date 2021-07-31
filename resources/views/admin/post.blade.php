@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin|Post Notification')
+@section('title', 'Project Coordinator|Post Notification')
 
 @section('content')
         <!-- Topbar -->
@@ -53,7 +53,7 @@
             </div>
 
 
-            <div class="container-fluid" id="container-wrapper">
+            {{-- <div class="container-fluid" id="container-wrapper">
                 <div class="d-sm-flex align-items-center justify-content-between">
                   <div class="col">
                     <div class="card" style="margin-left:-60px; width:1080px;">
@@ -76,7 +76,7 @@
                                    <tr>
                                    <td>{{ $noticeboard->id}}</td>
                                    <td>{{ $noticeboard->Recipient_type }}</td>
-                                   <td>{{ $noticeboard->Recipient_type[0]->Message }}</td>
+                                   <td>{{ $noticeboard->Message }}</td>
                                    <td>{{ $noticeboard->created_at }}</td>
                                    <td>
                                       <button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
@@ -90,7 +90,7 @@
                     </div>
                   </div>
                   
-            </div>
+            </div> --}}
    <!-- Topbar -->
         <!-- Container Fluid-->
         <!---Container Fluid-->

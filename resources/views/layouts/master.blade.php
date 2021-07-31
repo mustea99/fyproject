@@ -23,14 +23,14 @@
             <div class="sidebar-brand-text mx-3">STUDENT</div>
         </a>
         @if(auth()->guard('student')->check())
-            <hr class="sidebar-divider my-0">
+            {{-- <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('student') }}">
+                <a class="nav-link" href="{{url('student/dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="font-size:15px;letter-spacing:1px;">Dashboard</span></a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
+            </li> --}}
+            {{-- <hr class="sidebar-divider"> --}}
+            <div class="sidebar-heading mt-3">
                Supervisor
             </div>
             <li class="nav-item">
@@ -91,6 +91,15 @@
                         <span style="font-size:15px;letter-spacing:1px;">Submit Topic</span>
                     </a>
                 </li>
+
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">Chat Room</div>
+                <li class="nav-item">
+                        <a class="nav-link mb-2" href="{{ route('student.chat') }}">
+                            <i class="fas fa-comments"></i>
+                            <span style="font-size:15px;letter-spacing:1px;">Chat</span>
+                        </a>
+                    </li>
            @else
 
            <li class="nav-item">

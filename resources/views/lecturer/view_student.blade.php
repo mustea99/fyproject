@@ -10,7 +10,7 @@
         <div class="list-group p-2">
                
                 <table class="table table-bordered table-striped">
-                  <th>ID</th>
+                  
                   <th>Name</th>
                   <th>Registration Number</th>
                   <th>Department</th>
@@ -18,7 +18,7 @@
                   <th>Mobile No</th>
                                 @foreach($students as  $student)
                             <tr>
-                                <td>{{ $student->id }}</td>
+                                
                                 <td> {{ $student->First_name }} {{ $student->Other_names }}</td>
                                 <td>{{ $student->RegNo }}</td>
                                 <td>{{ $student->Department }}</td>

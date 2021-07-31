@@ -12,7 +12,7 @@
                     <th>Title</th>
                     <th>Chapter  </th>
                     <th>Uploaded At</th>
-                    <th>Action</th>
+                    
                     <tbody>
 
                     @foreach ($project_chapters as $project_chapter)
@@ -22,8 +22,7 @@
                         </td>
                         <td> {{ $project_chapter->chapter}}</td>
                         <td> {{ $project_chapter->created_at}}</td>
-                        <td><a class="btn btn-danger" href=""type="submit"><span><i class="fa fa-trash-alt"></i></span></a></td>
-                    </tr>
+                        </tr>
                     @endforeach
                 </tbody>
                 </table>

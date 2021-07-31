@@ -24,7 +24,7 @@
         </a>
         <hr class="sidebar-divider my-0">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('lecturer') }}">
+            <a class="nav-link" href="{{url('lecturer/dashboard')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -77,7 +77,15 @@
             </a>
         </li>
         <hr class="sidebar-divider">
-
+        <div class="sidebar-heading">
+            Chat Room
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/lecturer/chat') }}">
+                <i class="fas fa-comments"></i>
+                <span> Chat</span>
+            </a>
+        </li>
     </ul>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">

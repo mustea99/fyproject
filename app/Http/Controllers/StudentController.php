@@ -20,7 +20,23 @@ use Mockery\Matcher\Not;
 
 class StudentController extends Controller
 {
-
+public function dashboard(){
+    // $proposal=Proposal::query()
+    // ->select('proposals.*','proposals.lecturer')
+    // ->join('students','students.id','proposals.student')
+    // ->where('proposals.student',auth::guard('student')->user()->id)
+    // ->get(); 
+   // @dd(auth::guard('student')->user());
+//    $project['all'] = Approved_project::select('ProjectTitle', 'CaseStudy')->where('id', Auth::guard('student')->user()->id);
+//    dd($project['all']);
+    $student=Student::query()
+    ->select('First_name','Other_names')
+    ->where('students.id',auth::guard('student')->user())
+    ->get();
+    
+    return view('student.dashboard',['students'=>$student]);
+        
+}
     public function showApproved()
     {
         return view('student.approved');
@@ -56,7 +72,7 @@ class StudentController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:5|max:100',
             'chapter' => 'required',
-            'document' => 'mimes:pdf,doc,docx'
+            'document' => 'mimes:pdf,doc,docx|max:500000'
         ]);
 
         $student = Auth::guard('student')->user();
@@ -211,8 +227,8 @@ class StudentController extends Controller
     public function saveProposal(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:10|max:100',
-            'document' => 'required|file|mimes:pdf,doc,docx'
+            'title' => 'required|min:5|max:100',
+            'document' => 'required|file|mimes:pdf,doc,docx|max:500000'
         ]);
 
         $currentStudent = Auth::guard('student')->user();

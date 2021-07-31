@@ -22,7 +22,7 @@
             <div class="sidebar-brand-icon">
                 {{-- <img src="{{asset ('assets/img/logo/adminlogo3.jpg')}}" width="100px" height="100px" style="border-radius:200px;">  --}}
             </div>
-            <div class="sidebar-brand-text mx-3">@if(auth()->guard('admin')->check())ADMIN @endif</div>
+            <div class="sidebar-brand-text mx-3">@if(auth()->guard('admin')->check())PROJECT COORDINATOR @endif</div>
         </a>
 
         @if(auth()->guard('admin')->check())
@@ -38,14 +38,14 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_lecturer')}}" >
-                    <i class="fa fa-user"></i>
-                    <span style="font-size:14px;">Manage Lecturer</span>
+                    <i class="fa fa-plus"></i>
+                    <span style="font-size:14px;">Add Lecturer</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.view_lecturer')}}" style="font-size:20px;">
-                    <i class="fa fa-eye"></i>
-                    <span style="font-size:14px;">View Lecturers</span>
+                    <i class="fa fa-users-cog"></i>
+                    <span style="font-size:14px;">Manage Lecturer</span>
                 </a>
             </li>
             <hr class="sidebar-divider">
@@ -55,14 +55,14 @@
            
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.manage_student')}}" >
-                    <i class="fa fa-user"></i>
-                    <span style="font-size:14px;">Manage Student</span>
+                    <i class="fa fa-file-import"></i>
+                    <span style="font-size:14px;">Import Student</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{Route('admin.view_student')}}" >
-                    <i class="fa fa-eye"></i>
-                    <span style="font-size:14px;">View Students</span>
+                    <i class="fa fa-users-cog"></i>
+                    <span style="font-size:14px;">Manage Student</span>
                 </a>
             </li>
             <hr class="sidebar-divider">

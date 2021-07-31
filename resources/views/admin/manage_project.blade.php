@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin|Manage Project')
+@section('title', 'Project Coordinator|View Project')
 
 @section('content')
 <div class="col-lg-12">

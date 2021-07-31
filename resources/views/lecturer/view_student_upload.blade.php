@@ -13,24 +13,23 @@
           </div>
           <div class="card-body">
 <table class="table table-bordered  ">
-    <th>Sn</th>
+    {{-- <th>Sn</th> --}}
     <th>Name</th>
     <th>Registration Number</th>
     <th>Project Title</th>
     <th>Chapter</th>
     <th>Document</th>
-    <th>Comment</th>
     {{-- <th>Uploaded At</th> --}}
     <tbody>
         @foreach($project_chapters as $project_chapter)
         <tr>
-            <td> {{$project_chapter->id }}</td>
+            {{-- <td> {{$project_chapter->id }}</td> --}}
             <td> {{ $project_chapter->First_name }}  {{ $project_chapter->Other_names }}</td>
             <td> {{ $project_chapter->RegNo }}</td>
             <td> {{ $project_chapter->title }}</td>
             <td>{{ $project_chapter->chapter }}</td>
             <td> <a href="{{ url("uploads/".$project_chapter->document)}}" class="btn btn-primary"><span><i class=" fa fa-download">&nbsp;Download</i></span></a></td>
-             <td><a  href=""class="btn btn-info"><i class="fa fa-edit"></i></a></td>
+             
         </tr>
         @endforeach
     </tbody>

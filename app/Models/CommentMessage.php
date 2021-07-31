@@ -15,10 +15,16 @@ class CommentMessage extends Model
 
     public function getSender(): Authenticatable
     {
+        // check sender type 
         if ('student' == $this->sender_type) {
             return Auth::guard('student')->user();
         }
-
-        return Auth::guard('lecturer')->user();
+         return Auth::guard('lecturer')->user();
     }
-}
+        // if('student'==$this->sender_type){
+        //     return Student::query()->find($this->getSender);
+        // }
+        // return Lecturer::query()->find($this->getSender);
+
+    }
+

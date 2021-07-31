@@ -12,9 +12,8 @@
             <title>Student Authentication Page </title>
     </head>
     
-<body style="background-image:url({{asset ('assets/img/logo/admin-back3.jpg') }})">
-     
-                    <div style="margin-top:100px; letter-spacing:2px;padding:2px;text-transform:uppercase;font-weight:bold;"><h2 class="text-center text-white mt-4 shadow"style="font-weight:bolder;">Student Authentication</h2></div>
+<body >
+                    <div style="letter-spacing:2px;padding:2px;text-transform:uppercase;font-weight:bold;"><h4 class="text-center text-info mt-4"style="font-weight:bolder;">Student Authentication</h4></div>
                     <div class="container-login">
                         <div class=" col-lg-12 mt-4">
      
@@ -38,7 +37,7 @@
                                           <button type="submit" class="btn btn-info btn-block" style="font-weight:bolder;letter-spacing:2px;">Authenticate</button>
                                         </div>
                                         <div class="nav-divider" style="margin-top:-14px;"><hr></div>
-                                        <div><h6 class="text-center text-white" style="letter-spacing:2px;font-size:18px;font-weight:bolder;">Already Authenticated ? <a class="link shadow" href="{{ route('student.auth.login')}}" style=" text-decoration:none;font-weight:bolder;font-size:20px;">Login</a></h6></div>
+                                        <div><h6 class="text-center text-azure" style="letter-spacing:2px;font-size:18px;font-weight:bolder;">Already Authenticated ? <a class="link text-info" href="{{ route('student.auth.login')}}" style=" text-decoration:none;font-weight:bolder;font-size:20px;">Login</a></h6></div>
                                       </form>
                                     </div>
                                   </div>

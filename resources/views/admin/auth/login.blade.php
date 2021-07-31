@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Login')
+@section('title', 'Project Coordinator Login')
 
 @section('content')
     <div class="d-flex justify-content-center">
         <div class="col-lg-8">
 
             <div class="card shadow-lg" style="border:1px solid silver;">
-                <div class="card-header text-uppercase text-center bg-blue " style="letter-spacing:2px;font-size:20px;font-weight:bolder;">Admin Login</div>
+                <div class="card-header text-uppercase text-center bg-blue " style="letter-spacing:2px;font-size:20px;font-weight:bolder;">Project Coordinator Login</div>
                 <div class="nav-divider " style="margin-top:-18px;"><hr></div>
                 <div class="card-body">
                     <form action="" method="POST">

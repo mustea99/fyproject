@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin|Manage Lecturer')
+@section('title', 'Project Coordinator|Add Lecturer')
 
 @section('content')
     <div class="container-fluid" id="container-wrapper">
@@ -88,7 +88,7 @@
 
                             <div class="form-group mt-2">
                                 
-                               <textarea name="Office"class="form-control" cols="10" rows="4" placeholder="Office Address">Office Address </textarea>
+                               <textarea name="Office"class="form-control" cols="10" rows="4" placeholder="Office Address"></textarea>
                                 @error('Office')
                                 <span class="text-error">{{ $message }}</span>
                                 @enderror
@@ -107,7 +107,7 @@
 
 {{-- import section --}}
 
-<div class="container-fluid mt-4" id="container-wrapper">
+{{-- <div class="container-fluid mt-4" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between">
       
     <div class="col-lg-12">
@@ -137,7 +137,7 @@
   </div>
 </div>
 </div>
-</div>
+</div> --}}
 @endsection
 
 

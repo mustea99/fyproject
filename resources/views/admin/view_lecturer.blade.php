@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin|View Lecturer')
+@section('title', 'Project Coordinator|Manage Lecturer')
 
 @section('content')
 

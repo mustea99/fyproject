@@ -13,12 +13,19 @@ use App\Models\ProjectChapter;
 use App\Models\Student;
 use App\Models\Proposal;
 use App\Models\Comment;
+use App\Models\Approved_project;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class LecturerController extends Controller
 {
+    public function lecturerdash(){
+        $Approved= Approved_project::all();
+        return view('lecturer.dashboard',[
+            'approved_projects'=>$Approved
+        ]);
+    }
 
     public function viewstudent($id)
     {
@@ -58,7 +65,7 @@ class LecturerController extends Controller
 
         return redirect()
             ->back()
-            ->with('msg:warning', 'Incorrect staff email or password')
+            ->with('msg:warning', 'Incorrect Lecturer email or password')
             ->withInput($request->all());
 
     }

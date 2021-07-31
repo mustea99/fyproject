@@ -4,6 +4,7 @@
 //  All Lecturer Methods goes here !
 use App\Http\Controllers\Lecturer\ProposalController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::middleware('lecturer')
     ->prefix('lecturer')
     ->name('lecturer.')
     ->group(function () {
-        Route::get('chat', [MainController::class, 'chat']);
+        Route::get('/chat',[MainController::class,'chat'])->name('lecturer.chat');
         Route::post('/logout', [LecturerController::class, 'logout'])->name('logout');
         Route::get('/view_student/{id}', [LecturerController::class, 'viewstudent'])->name('view_student');
         Route::get('/grade_student', [LecturerController::class, 'grade_student'])->name('grade_student');
@@ -28,6 +29,8 @@ Route::middleware('lecturer')
         Route::match(['get', 'post'], '/list_uploads/{id}', [LecturerController::class, 'viewUploadInfo'])
         ->whereNumber('id')
         ->name('view_upload');
+        Route::get('/dashboard', [LecturerController::class,'lecturerdash'])->name('dashboard');
+
 
         //PROPOSALS
         Route::prefix('proposal')

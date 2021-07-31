@@ -55,6 +55,10 @@ return [
             'driver' => 'session',
             'provider' => 'lecturers',
         ],
+        'super' => [
+            'driver' => 'session',
+            'provider' => 'supers',
+        ],
 
 
         'api' => [
@@ -102,6 +106,11 @@ return [
             'model' => \App\Models\Lecturer::class,
         ],
 
+        'supers' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Super::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -145,6 +154,14 @@ return [
 
         'lecturers' => [
             'provider' => 'lecturers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        
+        'supers' => [
+            'provider' => 'supers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

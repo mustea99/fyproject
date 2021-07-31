@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\LecturerController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SuperController;
 
 
 /*
@@ -94,7 +95,8 @@ Route::post('student/logout', [StudentController::class, 'logout'])->name('stude
 Route::middleware('student')
     ->prefix('student')
     ->group(function () {
-        Route::get('chat', [MainController::class, 'chat']);
+        Route::get('/dashboard',[StudentController::class,'dashboard'])->name('student.dashboard');
+        Route::get('/chat', [MainController::class, 'studentChat'])->name('student.chat');
         Route::get('/View Notice Board', [studentController::class, 'stud_view_notice'])->name('student.view_notice_board');
         Route::get('/view_supervisor', [StudentController::class, 'view_supervisor'])->name('student.view_supervisor');
         Route::get('/proposal', [StudentController::class, 'listProposals'])->name('student.proposal');
@@ -122,3 +124,13 @@ Route::middleware('student')
 
 Route::post('/import', [ImportController::class, 'store']);
 
+
+// Super Admin
+Route::get('super/login',[SuperController::class,'adminLogin'])->name('super.auth.login');
+Route::post('super/login',[SuperController::class,'doLogin']);
+Route::middleware('super')->group(function(){
+Route::get('super/addProjectCord',[SuperController::class,'showAddProjectCord'])->name('super.addProjectCord');
+Route::post('super/addProjectCord',[SuperController::class,'addProjectCord'])->name('super.addProjectCord.submit');
+Route::get('super/viewProjectCord',[SuperController::class,'viewProjectCoord'])->name('super.view_project_cord');
+Route::post('super/logout', [SuperController::class, 'logout'])->name('super.logout');
+});

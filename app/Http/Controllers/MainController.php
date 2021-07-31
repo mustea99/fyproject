@@ -21,6 +21,15 @@ class MainController extends Controller
         return view('student.chat');
     }
 
+    public function studentChat()
+    {
+        if (Auth::guard('student')->check()) {
+            return view('student.chat');
+        }
+
+        return view('lecturer.chat');
+    }
+
     public function testView()
     {
         return view('one');
