@@ -22,21 +22,21 @@
         
                 <table class="table table-bordered  table striped" style="margin-top:-15px;">
                 <th class="table-header">Sn</th>
-                <th class="table-header">First Name</th>
-                <th class="table-header">Other Names</th>
+                <th class="table-header">Name</th>
+               
                 <th class="table-header">Registration Number </th>
-                <th class="table-header">Gender</th>
+                
                 <th class="table-header">Lecturer</th>
                
                 <th class="table-header">Action</th>
                 <tbody>
                   @foreach ($students as $student)
                     <tr>
-                    <td>{{ $student->id }}</td>
-                    <td>{{ $student->First_name }}</td>
-                    <td>{{ $student->Other_names }}</td>
+                      <td>{{ $student->id }}</td>
+                    <td>{{ $student->First_name }} {{ $student->Other_names }}</td>
+                    
                     <td>{{ $student->RegNo}}</td>
-                    <td>{{ $student->Gender }}</td>
+                   
                     <td>{{ $student->lFirst_name }} {{ $student->lOther_names }}</td>
                   
                     <td> 

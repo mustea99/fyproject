@@ -47,8 +47,9 @@
 
 
                 --}}
+                <div class="text-center "><img src="{{ asset('assets\img\logo\buk.png') }}" width="150px" height="150px"></div>
 
-<div style=" letter-spacing:3px;padding:2px;text-transform:uppercase;font-weight:bold;"><h3
+<div style=" letter-spacing:3px;padding:2px;text-transform:capitalize;font-weight:bold;"><h3
         class="text-center text-info mt-4" style="font-weight:bolder;">Supervisor Login</h3></div>
 <div class="container-login">
     <div class=" col-lg-12 mt-4">

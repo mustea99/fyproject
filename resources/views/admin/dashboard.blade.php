@@ -14,7 +14,7 @@
         <table class="table table-bordered table-striped" style="margin-top:-15px;">
         <thead>
         <tr>
-          <th>Sn</th>
+          
           <th>Name</th>
           <th>Registration Number</th>
           <th>Project Title</th>
@@ -26,7 +26,7 @@
         @foreach ($approved_projects as $approved_project)
        
           <tr>
-            <td>{{  $approved_project->id}}</td>
+            
             <td>{{  $approved_project->Name}}</td>
             <td>{{  $approved_project->RegNo}}</td>
             <td>{{  $approved_project->ProjectTitle}}</td>
