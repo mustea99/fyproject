@@ -1,19 +1,17 @@
 <?php
 use React\EventLoop\Factory;
+use React\Http\HttpServer;
 use React\Http\Server;
+use React\Socket\SocketServer;
 use Reactificate\Websocket\Middleware;
 use Reactificate\Websocket\Prebuilt\Servers\ChatServer;
 
 require 'vendor/autoload.php';
 
-$loop = Factory::create();
-
 $wsServers = Middleware::create(new ChatServer());
 
-$socket = new \React\Socket\Server(8001, $loop);
-$server = new Server($loop, ...$wsServers);
+$socket = new SocketServer('127.0.0.1:8800');
+$server = new HttpServer(...$wsServers);
 $server->listen($socket);
 
-echo "Websocket Server Started\n";
-
-$loop->run();
+echo "Websocket server started\n";

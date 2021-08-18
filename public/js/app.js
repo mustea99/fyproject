@@ -2295,7 +2295,7 @@ var setWSConnectionState = function setWSConnectionState(state) {
 };
 
 window.initialiseWebsocket = function (username) {
-  var websocket = new Reactificate.Websocket('ws://127.0.0.1:8001/ws/chat');
+  var websocket = new Reactificate.Websocket('ws://127.0.0.1:8800/ws/chat');
   var elConnectionState = document.getElementById('connection-state');
   var textareaMessage = document.getElementById('message');
   var elMessages = document.getElementById('messages');

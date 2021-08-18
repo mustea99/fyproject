@@ -24,7 +24,8 @@ class LecturersSeeder extends Seeder
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
                 'Password'=> '1234',
                 'Department' => 'Computer Science',
-                'Office' => '1'
+                'Office' => '1',
+                'Phone_No' => '0701234568'
             ],
             [
                 'First_Name' => 'Mallam',
@@ -33,7 +34,8 @@ class LecturersSeeder extends Seeder
                 'Avatar'=>'assets/img/logo/admin-back3.jpg',
                 'Password'=> '1234',
                 'Department' => 'Computer Science',
-                'Office' => '2'
+                'Office' => '2',
+                'Phone_No' => '0701234569'
             ],
         ];
 
